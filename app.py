@@ -1,5 +1,6 @@
 import streamlit as st
 import io
+import os
 from PIL import Image, ImageOps
 from database import init_db, save_plant, get_all_plants, get_plant_photos, delete_plant, add_plant_photo
 from plantnet_api import identify_plant, identify_disease
@@ -9,6 +10,10 @@ import datetime
 init_db()
 
 st.set_page_config(page_title="Suivi de Plantes d'Intérieur", layout="wide")
+
+# Thème Aqua (feuille de style externe)
+with open(os.path.join(os.path.dirname(__file__), "style.css"), encoding="utf-8") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 @st.dialog("Confirmer la suppression")
 def confirm_delete_dialog(plant_id, plant_name):

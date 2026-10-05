@@ -1,0 +1,193 @@
+/* Thème "Aqua" façon Mac OS X Cheetah/Jaguar/Panther (2000-2004) */
+
+:root {
+  --aqua-blue-1: #8fc8ff;
+  --aqua-blue-2: #3b8ff0;
+  --aqua-blue-3: #1565d8;
+  --aqua-border: #0b4aa8;
+  --aqua-text: #17283d;
+  --stripe-a: #e9f1fb;
+  --stripe-b: #dde9f7;
+}
+
+html, body, .stApp, .stApp p, .stApp label, .stApp input, .stApp textarea,
+.stApp button, .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp li,
+.stApp [data-testid="stMarkdownContainer"], .stApp [data-testid="stCaptionContainer"] {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+}
+
+/* Les icônes Material doivent garder leur police de glyphes */
+[data-testid="stIconMaterial"], .material-icons, .material-symbols-rounded,
+span[class*="material-symbols"] {
+  font-family: "Material Symbols Rounded", "Material Icons" !important;
+}
+
+/* Fond rayé caractéristique */
+.stApp {
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--stripe-a) 0, var(--stripe-a) 2px,
+    var(--stripe-b) 2px, var(--stripe-b) 4px
+  );
+  color: var(--aqua-text);
+}
+
+[data-testid="stHeader"] { background: transparent; }
+
+/* Titres */
+h1, h2, h3, h4 {
+  color: #12304f !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,.9);
+  font-weight: bold !important;
+}
+h1 { font-size: 2rem !important; }
+
+/* Barre latérale : aluminium brossé bleuté */
+section[data-testid="stSidebar"] {
+  background:
+    linear-gradient(to right, rgba(255,255,255,.55), rgba(255,255,255,0) 8%),
+    linear-gradient(to bottom, #e3eefc 0%, #bfd4ee 100%);
+  border-right: 1px solid #6f8bb0;
+  box-shadow: 2px 0 8px rgba(0,0,0,.25);
+}
+
+/* Fenêtres : conteneurs avec bordure */
+[data-testid="stVerticalBlockBorderWrapper"]:has(> div > [data-testid="stVerticalBlock"]):not(:has([data-testid="stVerticalBlockBorderWrapper"])) {
+  background: linear-gradient(to bottom, #fafdff 0%, #e6f0fc 100%);
+  border: 1px solid #6f8bb0 !important;
+  border-radius: 10px !important;
+  box-shadow:
+    0 6px 14px rgba(0,0,0,.28),
+    0 1px 0 rgba(255,255,255,.9) inset;
+  overflow: hidden;
+}
+
+/* Boutons gel Aqua (primaire) */
+.stButton > button, .stFormSubmitButton > button, .stDownloadButton > button {
+  position: relative;
+  border-radius: 999px !important;
+  border: 1px solid #6f8bb0 !important;
+  color: #1b1b1b !important;
+  font-weight: bold;
+  text-shadow: 0 1px 0 rgba(255,255,255,.8);
+  background: linear-gradient(to bottom, #fbfdff 0%, #e1ecf9 48%, #c6d8ee 52%, #e4eefa 100%) !important;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.3),
+    0 1px 0 rgba(255,255,255,.9) inset;
+  transition: filter .15s;
+}
+.stButton > button:hover, .stFormSubmitButton > button:hover { filter: brightness(1.06); }
+.stButton > button:active, .stFormSubmitButton > button:active {
+  filter: brightness(.92);
+  box-shadow: 0 1px 3px rgba(0,0,0,.5) inset;
+}
+
+.stButton > button[kind="primary"], .stFormSubmitButton > button[kind="primary"],
+.stFormSubmitButton > button[kind="primaryFormSubmit"] {
+  color: #fff !important;
+  border: 1px solid var(--aqua-border) !important;
+  text-shadow: 0 -1px 1px rgba(0,40,120,.8);
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,.75) 0%, rgba(255,255,255,.15) 50%, rgba(255,255,255,0) 51%),
+    linear-gradient(to bottom, var(--aqua-blue-1) 0%, var(--aqua-blue-2) 50%, var(--aqua-blue-3) 100%) !important;
+  box-shadow:
+    0 2px 5px rgba(0,50,140,.55),
+    0 1px 0 rgba(255,255,255,.7) inset;
+}
+
+/* Champs de saisie */
+[data-baseweb="input"], [data-baseweb="textarea"], [data-baseweb="select"] > div {
+  background: #fff !important;
+  border: 1px solid #7a97bd !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 3px rgba(0,0,0,.2) inset;
+}
+[data-baseweb="input"] input, [data-baseweb="textarea"] textarea { background: transparent !important; }
+[data-baseweb="input"]:focus-within, [data-baseweb="textarea"]:focus-within,
+[data-baseweb="select"] > div:focus-within {
+  border-color: #3b8ff0 !important;
+  box-shadow: 0 2px 3px rgba(0,0,0,.2) inset, 0 0 0 3px rgba(80,160,255,.55);
+}
+
+/* Boutons radio de navigation */
+[data-testid="stRadio"] label {
+  background: linear-gradient(to bottom, rgba(255,255,255,.7), rgba(255,255,255,.2));
+  border: 1px solid rgba(110,125,145,.6);
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin-bottom: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+[data-testid="stRadio"] label:has(input:checked) {
+  color: #fff;
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,.6) 0%, rgba(255,255,255,0) 50%),
+    linear-gradient(to bottom, var(--aqua-blue-1), var(--aqua-blue-3));
+  border-color: var(--aqua-border);
+  text-shadow: 0 -1px 1px rgba(0,40,120,.8);
+}
+[data-testid="stRadio"] label:has(input:checked) * { color: #fff !important; }
+[data-testid="stRadio"] label > div:first-child { display: none; }
+
+/* Expanders : style "disclosure" */
+[data-testid="stExpander"] details {
+  border: 1px solid #99a4b3 !important;
+  border-radius: 8px !important;
+  background: linear-gradient(to bottom, #fbfdff, #e4eefb);
+  box-shadow: 0 1px 3px rgba(0,0,0,.18);
+}
+[data-testid="stExpander"] summary {
+  background: linear-gradient(to bottom, #f7fbff, #d3e2f4);
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Zone d'upload */
+[data-testid="stFileUploaderDropzone"] {
+  background: linear-gradient(to bottom, #f7fbff, #dcebfb);
+  border: 2px dashed #5b9be8;
+  border-radius: 10px;
+}
+
+/* Alertes : verre teinté */
+[data-testid="stAlert"] {
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.25);
+  box-shadow: 0 2px 5px rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.7) inset;
+}
+
+/* Métrique : "pastille" */
+[data-testid="stMetric"] {
+  background: linear-gradient(to bottom, #fbfdff, #d6e5f8);
+  border: 1px solid #6f8bb0;
+  border-radius: 10px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.2);
+}
+
+/* Séparateurs */
+hr { border-top: 1px solid #9aa5b4 !important; border-bottom: 1px solid #fff; }
+
+/* Images : cadre photo avec ombre */
+[data-testid="stImage"] img {
+  border-radius: 6px;
+  border: 1px solid #8a95a5;
+  box-shadow: 0 3px 8px rgba(0,0,0,.35);
+}
+
+/* Boîte de dialogue : feuille Aqua */
+[data-testid="stDialog"] div[role="dialog"] {
+  border-radius: 12px;
+  border: 1px solid #6e7a8c;
+  background: linear-gradient(to bottom, #fbfdff, #dbe8f8);
+  box-shadow: 0 12px 30px rgba(0,0,0,.5);
+}
+
+/* Tags du multiselect : pastilles bleues */
+[data-baseweb="tag"] {
+  background: linear-gradient(to bottom, #b6dbff, #5a9ee8) !important;
+  border: 1px solid var(--aqua-border);
+  border-radius: 999px !important;
+  color: #fff !important;
+}
+[data-baseweb="tag"] span { color: #fff !important; text-shadow: 0 -1px 1px rgba(0,40,120,.7); }
