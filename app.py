@@ -10,6 +10,16 @@ init_db()
 
 st.set_page_config(page_title="Suivi de Plantes d'Intérieur", layout="wide")
 
+@st.dialog("Confirmer la suppression")
+def confirm_delete_dialog(plant_id, plant_name):
+    st.write(f"Êtes-vous sûr de vouloir supprimer **{plant_name}** ? Cette action est irréversible.")
+    col_yes, col_no = st.columns(2)
+    if col_yes.button("Oui, supprimer", type="primary", use_container_width=True):
+        delete_plant(plant_id)
+        st.rerun()
+    if col_no.button("Annuler", use_container_width=True):
+        st.rerun()
+
 # Fonction pour convertir une date AAAA-MM-JJ au format français JJ/MM/AAAA
 def format_date_fr(date_str):
     if not date_str:
@@ -195,8 +205,7 @@ elif page == "🖼️ Mes Plantes":
                                 st.error("Veuillez sélectionner une image.")
                     
                     if st.button("🗑️ Supprimer", key=f"del_{p['id']}", type="secondary", use_container_width=True):
-                        delete_plant(p["id"])
-                        st.rerun()
+                        confirm_delete_dialog(p["id"], (p["nom_commun"].split(",")[0] if p["nom_commun"] else "cette plante"))
 
 elif page == "🩺 Soigner une maladie":
     st.header("🩺 Diagnostic des maladies")
